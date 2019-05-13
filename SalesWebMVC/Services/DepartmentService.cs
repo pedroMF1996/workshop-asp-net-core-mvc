@@ -1,4 +1,5 @@
-﻿using SalesWebMVC.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesWebMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace SalesWebMVC.Services
             _conext = conext;
         }
 
-        public List<Departments> FindAll()
+        public async Task<List<Departments>> FindAllAsync()
         {
-            return _conext.Departments.OrderBy(a => a.Nome).ToList();
+            return await _conext.Departments.OrderBy(a => a.Nome).ToListAsync();
         }
     }
 }
